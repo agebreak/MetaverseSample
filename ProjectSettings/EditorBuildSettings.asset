@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Customizable 3D Cyberpunk Characters/Scenes/Demo_Customization.unity
+    guid: 2c0ef1e0ae166af43866c68c1f08711f
   m_configObjects: {}

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using UI;
 using UnityEngine;
+using Newtonsoft.Json;
 
 namespace Character
 {
@@ -117,6 +118,27 @@ namespace Character
         {
             animator.SetTrigger("Play");            
         }
+
+        // 랜덤으로 캐릭터 외형 설정하기
+        public void MakeRandom()
+        {
+            foreach (var category in categories)
+            {
+                int randomIndex = UnityEngine.Random.Range(0, category.options.Length);
+                SelectOption(category.id, category.options[randomIndex].id);
+            }
+        }
+
+        public void Save()
+        {
+            customization.Save();
+        }
+
+        public void Load()
+        {
+            customization.Load();
+            ApplyCustomization();
+        }
     }
 
     [Serializable]
@@ -143,14 +165,19 @@ namespace Character
 
         public void Save()
         {
-            string json = JsonUtility.ToJson(this);
+            //string json = JsonUtility.ToJson(this);
+            string json = JsonConvert.SerializeObject(this);
             PlayerPrefs.SetString("CharacterCustomization", json);
+            Debug.Log(json);
         }
 
         public void Load()
         {
             string json = PlayerPrefs.GetString("CharacterCustomization");
-            CharacterCustomization customization = JsonUtility.FromJson<CharacterCustomization>(json);
+            Debug.Log(json);
+
+            //CharacterCustomization customization = JsonUtility.FromJson<CharacterCustomization>(json);
+            CharacterCustomization customization = JsonConvert.DeserializeObject<CharacterCustomization>(json);
             selectedOptions = customization.selectedOptions;
         }
     }
