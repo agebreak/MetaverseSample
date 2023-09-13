@@ -8,8 +8,10 @@ namespace Character
 {
     public class CharacterCustomizationManager : MonoBehaviour
     {
+        // 모든 리소스의 ID와 모델을 저장하고 있는 데이터
         public CharacterCustomizationCategory[] categories;
 
+        // 현재 선택된 모델의 ID들을 저장하고 있는 데이터
         public CharacterCustomization customization;
 
         public Animator animator;
@@ -42,6 +44,7 @@ namespace Character
             }
         }
 
+        // 모델 아이콘이 클릭되었을때 모델을 그에 맞게 변경 하는 코드
         public void SelectOption(string categoryID, string optionID)
         {
             if (customization.selectedOptions.ContainsKey(categoryID))
@@ -82,6 +85,7 @@ namespace Character
         [ContextMenu("Apply Customization")]
         public void ApplyCustomization()
         {
+            // 아바타에 붙어 있는 모든 아이템을 Active False 시킨다.
             foreach (CharacterCustomizationCategory category in categories)
             {
                 foreach (CharacterCustomizationOption option in category.options)
@@ -90,6 +94,7 @@ namespace Character
                 }
             }
 
+            // 세팅되어 있는 아이템만 Active True로 변경해준다
             foreach (CharacterCustomizationCategory category in categories)
             {
                 if (customization.selectedOptions.ContainsKey(category.id))
