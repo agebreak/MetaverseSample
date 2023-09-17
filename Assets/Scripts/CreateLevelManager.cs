@@ -1,14 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using static UnityEditor.PlayerSettings;
 
 public class CreateLevelManager : MonoBehaviour
 {
     public static CreateLevelManager instance; // 싱글톤
-    
-    // 선택된 레벨 아이템
-    Transform selectItem = null; 
+   
+    Transform selectItem = null;    // 선택된 레벨 아이템    
 
     // Start is called before the first frame update
     void Start()
@@ -51,6 +51,8 @@ public class CreateLevelManager : MonoBehaviour
         // 왼쪽 버튼 클릭시 그곳에 배치한다
         if(Input.GetMouseButtonDown(0)) 
         {
+            selectItem.gameObject.layer = 0; // 충돌을 켜준다
+            selectItem.GetComponent<Collider>().enabled = true;
             selectItem = null; 
         }
     }
@@ -66,5 +68,6 @@ public class CreateLevelManager : MonoBehaviour
 
         // 픽킹 충돌을 꺼준다.
         newItem.layer = 2; 
+        newItem.GetComponent<Collider>().enabled = false;
     }
 }

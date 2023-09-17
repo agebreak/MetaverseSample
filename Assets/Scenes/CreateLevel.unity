@@ -399,6 +399,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 678661695586810652, guid: d18ef521ea760ed4cbb11ee108e4d177, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 511141043fc330e42a3dd32c3fe5f080, type: 2}
+    - target: {fileID: 678661695586810652, guid: d18ef521ea760ed4cbb11ee108e4d177, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6107139821259471836, guid: d18ef521ea760ed4cbb11ee108e4d177, type: 3}
       propertyPath: m_Name
       value: ModularFemale
